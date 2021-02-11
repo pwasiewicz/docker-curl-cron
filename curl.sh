@@ -1,9 +1,8 @@
 #!/bin/sh
-
 set -e
 
-echo "$(date) - Start"
+echo "$(date) - start"
 
-curl $OPTIONS
+eval "curl $OPTIONS"
 
-echo "$(date) End"
+echo "$(date) - end"

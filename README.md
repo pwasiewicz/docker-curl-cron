@@ -1,10 +1,16 @@
-[![](https://images.microbadger.com/badges/image/jsonfry/curl-cron.svg)](https://microbadger.com/images/jsonfry/s3-sync "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/jsonfry/curl-cron.svg)](https://microbadger.com/images/jsonfry/s3-sync "Get your own version badge on microbadger.com")
-
-
-# jsonfry/curl-cron
+# pwasiewicz/curl-cron
 
 Docker image that runs periodically runs a curl command
+
+## Why is this forked? 
+Unfortunately, the original image disallows you to use command in env variables when used in docker compose:
+```
+environment:
+    URL: '-X POST  -H  ''accept: */*'' -d '''' ''http://example.com'''
+```
+
+Arguments are incorrectly parsed and curl was not invoked.
+**This repo fixes curl invocation to support mentioned cases.**
 
 ## Usage
 
@@ -34,4 +40,5 @@ Run just once (container is deleted afterwards):
     docker run --rm \
         -e OPTIONS=example.com \
         jsonfry/curl-cron now
+
 
